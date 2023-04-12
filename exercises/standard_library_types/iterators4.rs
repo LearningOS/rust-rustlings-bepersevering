@@ -13,6 +13,10 @@ pub fn factorial(num: u64) -> u64 {
     // For an extra challenge, don't use:
     // - recursion
     // Execute `rustlings hint iterators4` for hints.
+    if num == 0 {
+        return 1
+    }
+    (1..=num).reduce(|a, b| a * b).unwrap()
 }
 
 #[cfg(test)]
