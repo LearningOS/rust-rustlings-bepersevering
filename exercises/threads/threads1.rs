@@ -12,15 +12,17 @@ fn main() {
 
     let mut handles = vec![];
     for i in 0..10 {
+        handles.push(
         thread::spawn(move || {
             thread::sleep(Duration::from_millis(250));
             println!("thread {} is complete", i);
-        });
+        }));
     }
 
     let mut completed_threads = 0;
     for handle in handles {
         // TODO: a struct is returned from thread::spawn, can you use it?
+        handle.join();
         completed_threads += 1;
     }
 
